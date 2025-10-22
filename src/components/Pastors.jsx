@@ -7,8 +7,8 @@ function Pastors() {
   const team = [
     {
       img: pastor1,
-      name: "Pastor John Adeyemi",
-      role: "Resident Pastor",
+      name: "Pastor Dk olukoya",
+      role: "General overseer MFM",
       message:
         "A passionate teacher of the Word, guiding believers to walk in spiritual strength and victory.",
     },

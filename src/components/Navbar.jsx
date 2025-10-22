@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import logo from "../assets/mfm_logo-removebg-preview.png";
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50">
-      <div className="container mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo */}
+    <nav className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        {/* Log */}
         <div className="flex items-center space-x-3">
           <img
             src={logo}
             alt="MFM Church Logo"
             className="h-10 w-auto object-contain"
           />
-          <span className="text-xl font-bold text-purple-700 tracking-wide">
+          <span className="text-xl font-semibold text-purple-700 tracking-wide">
             MFM Sanctuary
           </span>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-8 font-medium">
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex items-center space-x-8 text-sm font-medium">
           <li>
             <a
               href="#about"
-              className="relative hover:text-purple-700 transition-colors before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-purple-600 hover:before:w-full before:transition-all before:duration-300"
+              className="text-gray-700 hover:text-purple-700 transition relative after:content-[''] after:block after:h-[2px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
             >
               About
             </a>
@@ -32,18 +33,23 @@ function Navbar() {
 
           {/* Mission Dropdown */}
           <li className="relative group">
-            <button className="flex items-center space-x-1 hover:text-purple-700 transition-colors">
+            <button className="flex items-center gap-1 text-gray-700 hover:text-purple-700 transition">
               <span>Mission</span>
-              <span className="text-xs transition-transform duration-300 group-hover:rotate-180">
-                ▼
-              </span>
+              <svg
+                className="w-4 h-4 transform group-hover:rotate-180 transition duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </button>
 
-            <ul className="absolute hidden group-hover:block bg-white shadow-xl rounded-xl mt-3 w-52 border border-gray-100 transition-all duration-300">
+            <ul className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 z-40">
               <li>
                 <a
                   href="#our-beliefs"
-                  className="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
+                  className="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
                 >
                   Our Beliefs
                 </a>
@@ -51,18 +57,18 @@ function Navbar() {
               <li>
                 <a
                   href="#outreach"
-                  className="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
+                  className="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
                 >
                   Outreach
                 </a>
               </li>
               <li>
-                <a
-                  href="#youth"
-                  className="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
+                <Link to ='/youth'
+              
+                  className="block px-4 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
                 >
                   Youth Ministry
-                </a>
+                </Link>
               </li>
             </ul>
           </li>
@@ -70,39 +76,38 @@ function Navbar() {
           <li>
             <a
               href="#shop"
-              className="relative hover:text-purple-700 transition-colors before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-purple-600 hover:before:w-full before:transition-all before:duration-300"
+              className="text-gray-700 hover:text-purple-700 transition relative after:content-[''] after:block after:h-[2px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
             >
               Shop
             </a>
           </li>
-
           <li>
             <a
               href="#contact"
-              className="relative hover:text-purple-700 transition-colors before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-purple-600 hover:before:w-full before:transition-all before:duration-300"
+              className="text-gray-700 hover:text-purple-700 transition relative after:content-[''] after:block after:h-[2px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
             >
               Contact
             </a>
           </li>
         </ul>
 
-        {/* Mobile Menu Button */}
+        {/* Hamburger (Mobile Only) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-purple-700 text-3xl focus:outline-none"
+          className="md:hidden text-purple-700 text-2xl focus:outline-none"
         >
           {menuOpen ? "✖" : "☰"}
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-md border-t border-gray-100 animate-fadeIn">
-          <ul className="flex flex-col text-center font-medium py-4 space-y-4">
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+          <ul className="flex flex-col font-medium text-gray-700 divide-y divide-gray-100">
             <li>
               <a
                 href="#about"
-                className="block text-gray-700 hover:text-purple-700 transition"
+                className="block px-6 py-4 hover:bg-purple-50 hover:text-purple-700"
                 onClick={() => setMenuOpen(false)}
               >
                 About
@@ -111,7 +116,7 @@ function Navbar() {
             <li>
               <a
                 href="#our-beliefs"
-                className="block text-gray-700 hover:text-purple-700 transition"
+                className="block px-6 py-4 hover:bg-purple-50 hover:text-purple-700"
                 onClick={() => setMenuOpen(false)}
               >
                 Our Beliefs
@@ -120,25 +125,24 @@ function Navbar() {
             <li>
               <a
                 href="#outreach"
-                className="block text-gray-700 hover:text-purple-700 transition"
+                className="block px-6 py-4 hover:bg-purple-50 hover:text-purple-700"
                 onClick={() => setMenuOpen(false)}
               >
                 Outreach
               </a>
             </li>
             <li>
-              <a
-                href="#youth"
-                className="block text-gray-700 hover:text-purple-700 transition"
+              <Link to="/youth"
+                className="block px-6 py-4 hover:bg-purple-50 hover:text-purple-700"
                 onClick={() => setMenuOpen(false)}
               >
                 Youth Ministry
-              </a>
+              </Link>
             </li>
             <li>
               <a
                 href="#shop"
-                className="block text-gray-700 hover:text-purple-700 transition"
+                className="block px-6 py-4 hover:bg-purple-50 hover:text-purple-700"
                 onClick={() => setMenuOpen(false)}
               >
                 Shop
@@ -147,7 +151,7 @@ function Navbar() {
             <li>
               <a
                 href="#contact"
-                className="block text-gray-700 hover:text-purple-700 transition"
+                className="block px-6 py-4 hover:bg-purple-50 hover:text-purple-700"
                 onClick={() => setMenuOpen(false)}
               >
                 Contact
