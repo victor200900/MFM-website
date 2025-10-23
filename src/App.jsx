@@ -7,6 +7,8 @@ import About from "./components/About";
 import Pastor from "./components/Pastors";
 import Belief from "./components/Belief";
 import YouthMinistry from "./components/YouthMinistry";
+import Outreach from "./components/Outreach";
+import Contact from "./components/Contact"
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
               <About />
               <Pastor />
               <Belief />
+              <Contact/>
               <Footer />
             </>
           }
@@ -45,6 +48,24 @@ function App() {
             </>
           }
         />
+
+                <Route
+          path="/outreach"
+          element={
+            <>
+          <div className="flex flex-col items-center justify-center min-h-screen text-center">
+  <div className="pt-16">
+    <Outreach />
+  </div>
+  <div className="mt-12">
+  </div>
+</div>
+
+          
+            </>
+          }
+        />
+        
       </Routes>
     </div>
   );

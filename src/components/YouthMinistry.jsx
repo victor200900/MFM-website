@@ -1,4 +1,5 @@
 import React from "react";
+import teenageClass from '../assets/teenageclass.jpeg';
 
 function YouthMinistry() {
   return (
@@ -34,7 +35,7 @@ function YouthMinistry() {
         {/* Image or Illustration */}
         <div className="relative">
           <img
-            src="https://images.unsplash.com/photo-1573164574392-490b30f18bb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80"
+            src={teenageClass}
             alt="Youth Ministry"
             className="rounded-xl shadow-lg object-cover w-full h-[350px]"
           />

@@ -1,45 +1,47 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center bg-black text-white overflow-hidden">
-      
+    <section className="relative h-screen w-full text-white overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.mubicdn.net/images/film/308967/cache-685514-1623407915/image-w1280.jpg')",
+            "url('https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1920&q=80')",
         }}
       ></div>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      {/* Purple Overlay */}
+      <div className="absolute inset-0 bg-purple-900/60"></div>
 
-      {/* Hero Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 max-w-3xl w-full text-center px-6 sm:px-10"
-      >
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-          Welcome to <span className="text-purple-400">MFM Sanctuary of Grace</span>
+      {/* Content */}
+      <div className="absolute bottom-20 left-10 md:left-20 z-10 max-w-2xl">
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
+          MFM (Sanctuary of Grace)
         </h1>
-
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-10">
-          Experience the power of God through prayer, worship, and His Word.
+        <p className="text-lg md:text-xl text-gray-200 mb-6">
+          Pursue. Engage. Encounter God.
+        </p>
+        <p className="text-sm md:text-base text-gray-300 mb-10">
+          Sundays at 9am · 22 Abiodun Street Shomolu, Lagos, Nigeria
         </p>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
-          className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 rounded-md font-medium transition duration-300"
-        >
-          Join Us This Sunday
-        </motion.button>
-      </motion.div>
+        <div className="flex gap-4">
+          <a
+            href="#watch"
+            className="bg-white text-purple-900 font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition"
+          >
+            Watch Live
+          </a>
+          <a
+            href="#visit"
+            className="border border-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-purple-900 transition"
+          >
+            Visit Us
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
