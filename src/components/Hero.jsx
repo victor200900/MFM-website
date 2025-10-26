@@ -2,7 +2,7 @@ import React from "react";
 
 function Hero() {
   return (
-    <section className="relative h-screen w-full text-white overflow-hidden">
+    <section className="relative min-h-screen w-full text-white flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -12,25 +12,27 @@ function Hero() {
         }}
       ></div>
 
-      {/* Purple Overlay */}
-      <div className="absolute inset-0 bg-purple-900/60"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-purple-900/70"></div>
 
       {/* Content */}
-      <div className="absolute bottom-20 left-10 md:left-20 z-10 max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
-          MFM (Sanctuary of Grace)
+      <div className="relative z-10 px-6 max-w-3xl">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+          MFM <span className="text-purple-300">(Sanctuary of Grace)</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-200 mb-6">
+
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-3 font-medium">
           Pursue. Engage. Encounter God.
         </p>
-        <p className="text-sm md:text-base text-gray-300 mb-10">
-          Sundays at 9am · 22 Abiodun Street Shomolu, Lagos, Nigeria
+
+        <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8">
+          Sundays at 9am · 22 Abiodun Street, Shomolu, Lagos, Nigeria
         </p>
 
-        <div className="flex gap-4">
+        <div className="flex justify-center gap-4">
           <a
             href="#watch"
-            className="bg-white text-purple-900 font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition"
+            className="bg-white text-purple-900 font-semibold px-6 py-3 rounded-md shadow-md hover:bg-gray-100 transition"
           >
             Watch Live
           </a>

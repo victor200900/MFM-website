@@ -6,14 +6,21 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Change navbar background on scroll
+  // Scroll background effect
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { name: "Home", to: "/" },
+    { name: "Our Beliefs", to: "#our-beliefs" },
+    { name: "Outreach", to: "/outreach" },
+    { name: "Youth Ministry", to: "/youth" },
+    { name: "About", to: "#about" },
+    { name: "Contact", to: "#contact" },
+  ];
 
   return (
     <nav
@@ -23,100 +30,44 @@ function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-5">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-5 md:px-10 py-4">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <img
-            src={logo}
-            alt="MFM Church Logo"
-            className="h-12 w-auto object-contain"
-          />
+        <Link to="/" className="flex items-center space-x-3">
+          <img src={logo} alt="MFM Logo" className="h-12 w-auto" />
           <span
-            className={`text-2xl md:text-3xl font-extrabold tracking-wide transition-colors ${
+            className={`text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide ${
               scrolled ? "text-purple-800" : "text-white"
             }`}
           >
             MFM Sanctuary
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <ul
-          className={`hidden md:flex items-center space-x-10 text-base font-semibold transition-colors ${
+          className={`hidden md:flex items-center space-x-8 lg:space-x-10 text-base font-semibold ${
             scrolled ? "text-gray-700" : "text-white"
           }`}
         >
-          <li>
-            <Link
-              to="/"
-              className="hover:text-purple-700 transition relative after:content-[''] after:block after:h-[3px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
-            >
-              Home
-            </Link>
-          </li>
-
-          {/* Dropdown */}
-          <li className="relative group">
-            <button className="flex items-center gap-1 hover:text-purple-700 transition">
-              <span>Mission</span>
-              <svg
-                className="w-4 h-4 transform group-hover:rotate-180 transition duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 9l-7 7-7-7"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <ul className="absolute left-0 mt-3 w-52 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition duration-300 z-40">
-              <li>
+          {navLinks.map((link, i) => (
+            <li key={i}>
+              {link.to.startsWith("/") ? (
+                <Link
+                  to={link.to}
+                  className="hover:text-purple-700 transition relative after:content-[''] after:block after:h-[3px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
+                >
+                  {link.name}
+                </Link>
+              ) : (
                 <a
-                  href="#our-beliefs"
-                  className="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700"
+                  href={link.to}
+                  className="hover:text-purple-700 transition relative after:content-[''] after:block after:h-[3px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
                 >
-                  Our Beliefs
+                  {link.name}
                 </a>
-              </li>
-              <li>
-                <Link
-                  to="/outreach"
-                  className="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700"
-                >
-                  Outreach
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/youth"
-                  className="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700"
-                >
-                  Youth Ministry
-                </Link>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a
-              href="#about"
-              className="hover:text-purple-700 transition relative after:content-[''] after:block after:h-[3px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="hover:text-purple-700 transition relative after:content-[''] after:block after:h-[3px] after:w-0 hover:after:w-full after:bg-purple-600 after:transition-all"
-            >
-              Contact
-            </a>
-          </li>
+              )}
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -130,31 +81,36 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
-          <ul className="flex flex-col font-medium text-gray-700 divide-y divide-gray-100">
-            {[
-              "Home",
-              "Our Beliefs",
-              "Outreach",
-              "Youth Ministry",
-              "About",
-              "Contact",
-            ].map((item, i) => (
-              <li key={i}>
-                <a
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
+      {/* Mobile Dropdown */}
+      <div
+        className={`md:hidden bg-white shadow-lg border-t border-gray-100 transition-all duration-500 overflow-hidden ${
+          menuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col font-medium text-gray-700 divide-y divide-gray-100">
+          {navLinks.map((link, i) => (
+            <li key={i}>
+              {link.to.startsWith("/") ? (
+                <Link
+                  to={link.to}
                   className="block px-6 py-5 text-lg hover:bg-purple-50 hover:text-purple-700"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {item}
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  href={link.to}
+                  className="block px-6 py-5 text-lg hover:bg-purple-50 hover:text-purple-700"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
                 </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }

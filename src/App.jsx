@@ -4,69 +4,60 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Pastor from "./components/Pastors";
+import Pastors from "./components/Pastors";
 import Belief from "./components/Belief";
 import YouthMinistry from "./components/YouthMinistry";
 import Outreach from "./components/Outreach";
-import Contact from "./components/Contact"
+import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="bg-gray-50 text-gray-800">
+    <div className="flex flex-col min-h-screen bg-purple-900 text-gray-800">
       <Navbar />
 
-      <Routes>
-        {/* Home Page */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <About />
-              <Pastor />
-              <Belief />
-              <Contact/>
-              <Footer />
-            </>
-          }
-        />
+      <main className="flex-grow">
+        <Routes>
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <About />
+                <Pastors />
+                <Belief />
+                <Contact />
+              </>
+            }
+          />
 
-        {/* Youth Ministry Page */}
-        <Route
-          path="/youth"
-          element={
-            <>
-          <div className="flex flex-col items-center justify-center min-h-screen text-center">
-  <div className="pt-16">
-    <YouthMinistry />
-  </div>
-  <div className="mt-12">
-  </div>
-</div>
+          {/* Youth Ministry Page */}
+          <Route
+            path="/youth"
+            element={
+              <section className="pt-24 pb-16">
+                <div className="container mx-auto px-6">
+                  <YouthMinistry />
+                </div>
+              </section>
+            }
+          />
 
-          
-            </>
-          }
-        />
+          {/* Outreach Page */}
+          <Route
+            path="/outreach"
+            element={
+              <section className="pt-24 pb-16">
+                <div className="container mx-auto px-6">
+                  <Outreach />
+                </div>
+              </section>
+            }
+          />
+        </Routes>
+      </main>
 
-                <Route
-          path="/outreach"
-          element={
-            <>
-          <div className="flex flex-col items-center justify-center min-h-screen text-center">
-  <div className="pt-16">
-    <Outreach />
-  </div>
-  <div className="mt-12">
-  </div>
-</div>
-
-          
-            </>
-          }
-        />
-        
-      </Routes>
+      <Footer />
     </div>
   );
 }

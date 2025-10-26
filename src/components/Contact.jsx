@@ -11,20 +11,20 @@ function Contact() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  // send through email
-  const handleEmailSend = (e) => {
+  // Send via Gmail
+  const handleGmailSend = (e) => {
     e.preventDefault();
-    const mailto = `mailto:info@mfmlagos.org?subject=${encodeURIComponent(
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=info@mfmlagos.org&su=${encodeURIComponent(
       form.subject
     )}&body=${encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     )}`;
-    window.location.href = mailto;
+    window.open(gmailLink, "_blank");
   };
 
-  // send through WhatsApp
+  // Send through WhatsApp
   const handleWhatsAppSend = () => {
-    const phoneNumber = "+2347045939049"; // your WhatsApp number
+    const phoneNumber = "2347045939049"; // your WhatsApp number (no +)
     const text = `Hello, I'm ${form.name}. ${form.message}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
@@ -73,7 +73,7 @@ function Contact() {
 
           {/* Contact Form */}
           <form
-            onSubmit={handleEmailSend}
+            onSubmit={handleGmailSend}
             className="bg-white shadow-xl rounded-2xl p-8 space-y-5"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -121,7 +121,7 @@ function Contact() {
                 type="submit"
                 className="flex-1 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 rounded-lg transition-all duration-300"
               >
-                Send via Email
+                Send via Gmail
               </button>
               <button
                 type="button"
