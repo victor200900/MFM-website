@@ -5,7 +5,7 @@ import missionImg from "../assets/ourmission.jpg";
 
 function About() {
   return (
-    <section id="about" className="py-20 md:py-28 bg-white text-gray-900 font-sans">
+    <section id="about" className="py-20 md:py-28 bg-purple-900 text-white font-sans">
       {/* ABOUT SECTION */}
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 px-6">
         {/* Text */}
@@ -15,12 +15,12 @@ function About() {
           transition={{ duration: 0.8 }}
           className="flex-1 space-y-6 text-center lg:text-left"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
             About Us
           </h2>
-          <p className="text-base sm:text-lg leading-relaxed text-gray-700">
+          <p className="text-base sm:text-lg leading-relaxed text-gray-200">
             At{" "}
-            <span className="font-semibold text-purple-900">
+            <span className="font-semibold text-white">
               MFM Sanctuary of Grace
             </span>
             , faith isn’t just spoken — it’s lived. Through powerful prayers,
@@ -31,7 +31,7 @@ function About() {
           <a href="#pastors">
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="mt-4 px-8 py-3 bg-purple-700 text-white rounded-full shadow-md hover:bg-purple-800 transition duration-300"
+              className="mt-4 px-8 py-3 bg-white text-purple-900 rounded-full shadow-md hover:bg-gray-100 transition duration-300"
             >
               Learn More
             </motion.button>
@@ -48,7 +48,7 @@ function About() {
           <img
             src={aboutImg}
             alt="About MFM Church"
-            className="rounded-3xl shadow-2xl max-h-[500px] object-cover w-full sm:w-[90%] hover:scale-105 transition-transform duration-500"
+            className="shadow-2xl max-h-[500px] object-cover w-full sm:w-[90%] hover:scale-105 transition-transform duration-500"
           />
         </motion.div>
       </div>
@@ -65,7 +65,7 @@ function About() {
           <img
             src={missionImg}
             alt="Our Mission"
-            className="rounded-3xl shadow-2xl max-h-[500px] object-cover w-full sm:w-[90%] hover:scale-105 transition-transform duration-500"
+            className="shadow-2xl max-h-[500px] object-cover w-full sm:w-[90%] hover:scale-105 transition-transform duration-500"
           />
         </motion.div>
 
@@ -76,10 +76,10 @@ function About() {
           transition={{ duration: 0.8 }}
           className="flex-1 space-y-6 text-center lg:text-left"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-purple-800 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
             Our Mission
           </h2>
-          <p className="text-base sm:text-lg leading-relaxed text-gray-700">
+          <p className="text-base sm:text-lg leading-relaxed text-gray-200">
             Our mission is to ignite spiritual revival through prayer, worship,
             and the Word of God. We’re raising a generation of believers who
             live in divine purpose, move in power, and shine the light of Christ
@@ -89,7 +89,7 @@ function About() {
             {["Faith", "Growth", "Purpose"].map((tag, i) => (
               <span
                 key={i}
-                className="px-5 py-2 bg-purple-100 text-purple-800 rounded-full font-semibold text-sm shadow-sm"
+                className="px-5 py-2 bg-white text-purple-900 rounded-full font-semibold text-sm shadow-sm"
               >
                 {tag}
               </span>

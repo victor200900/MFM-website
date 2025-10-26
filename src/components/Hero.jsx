@@ -2,24 +2,28 @@ import React from "react";
 
 function Hero() {
   return (
-    <section className="relative min-h-screen w-full text-white flex items-center justify-center text-center overflow-hidden">
+    <section className="relative min-h-screen w-full text-white flex items-center justify-center text-center font-[Montserrat]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1920&q=80')",
+            "url('https://billelliff.org/cdn/shop/articles/Praying_group.jpg?v=1631884312')",
         }}
       ></div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-purple-900/70"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content */}
       <div className="relative z-10 px-6 max-w-3xl">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
-          MFM <span className="text-purple-300">(Sanctuary of Grace)</span>
+        <h1 className="text-7xl sm:text-8xl md:text-9xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
+          MFM
         </h1>
+
+        <div className="inline-block bg-purple-300 text-purple-900 text-base sm:text-lg font-semibold px-4 py-2 rounded-2xl mb-6">
+          Sanctuary of Grace
+        </div>
 
         <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-3 font-medium">
           Pursue. Engage. Encounter God.
