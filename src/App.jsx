@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -12,9 +12,11 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-purple-900 text-gray-800">
+    <div className="flex flex-col min-h-screen bg-purple-900 text-gray-100 font-[Poppins]">
+      {/* Navbar (always visible) */}
       <Navbar />
 
+      {/* Page Content */}
       <main className="flex-grow">
         <Routes>
           {/* Home Page */}
@@ -35,8 +37,14 @@ function App() {
           <Route
             path="/youth"
             element={
-              <section className="pt-24 pb-16">
+              <section className="py-24 bg-gradient-to-b from-purple-950 via-purple-900 to-purple-800 min-h-screen">
                 <div className="container mx-auto px-6">
+                  <Link
+                    to="/"
+                    className="inline-block mb-8 text-sm text-pink-400 hover:text-pink-300 transition"
+                  >
+                    ← Back to Home
+                  </Link>
                   <YouthMinistry />
                 </div>
               </section>
@@ -47,8 +55,14 @@ function App() {
           <Route
             path="/outreach"
             element={
-              <section className="pt-24 pb-16">
+              <section className="py-24 bg-gradient-to-b from-purple-950 via-purple-900 to-purple-800 min-h-screen">
                 <div className="container mx-auto px-6">
+                  <Link
+                    to="/"
+                    className="inline-block mb-8 text-sm text-pink-400 hover:text-pink-300 transition"
+                  >
+                    ← Back to Home
+                  </Link>
                   <Outreach />
                 </div>
               </section>
@@ -57,6 +71,7 @@ function App() {
         </Routes>
       </main>
 
+      {/* Footer (always visible) */}
       <Footer />
     </div>
   );

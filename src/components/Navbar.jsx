@@ -15,9 +15,9 @@ function Navbar() {
 
   const navLinks = [
     { name: "Home", to: "/" },
-    { name: "Our Beliefs", to: "#our-beliefs" },
+    { name: "Beliefs", to: "#our-beliefs" },
     { name: "Outreach", to: "/outreach" },
-    { name: "Youth Ministry", to: "/youth" },
+    { name: "Children", to: "/youth" },
     { name: "About", to: "#about" },
     { name: "Contact", to: "#contact" },
   ];
@@ -25,9 +25,8 @@ function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-md border-b border-gray-200"
-          : "bg-transparent"
+      
+         "bg-white/95 backdrop-blur-lg shadow-md border-b border-gray-200"
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-5 md:px-10 py-4">
@@ -35,8 +34,8 @@ function Navbar() {
         <Link to="/" className="flex items-center space-x-3">
           <img src={logo} alt="MFM Logo" className="h-12 w-auto" />
           <span
-            className={`text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide ${
-              scrolled ? "text-purple-800" : "text-white"
+            className={`text-xl font-serif sm:text-2xl md:text-3xl font-extrabold tracking-wide ${
+              scrolled ? "text-purple-800" : "text-purple-500"
             }`}
           >
             MFM Sanctuary
@@ -45,8 +44,8 @@ function Navbar() {
 
         {/* Desktop Nav */}
         <ul
-          className={`hidden md:flex items-center space-x-8 lg:space-x-10 text-base font-semibold ${
-            scrolled ? "text-gray-700" : "text-white"
+          className={`hidden font-serif md:flex items-center space-x-8 lg:space-x-10 text-base font-semibold ${
+            scrolled ? "text-gray-700" : "text-black"
           }`}
         >
           {navLinks.map((link, i) => (

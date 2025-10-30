@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 function Contact() {
   const [form, setForm] = useState({
@@ -11,7 +12,6 @@ function Contact() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  // Send via Gmail
   const handleGmailSend = (e) => {
     e.preventDefault();
     const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=info@mfmlagos.org&su=${encodeURIComponent(
@@ -22,12 +22,39 @@ function Contact() {
     window.open(gmailLink, "_blank");
   };
 
-  // Send through WhatsApp
   const handleWhatsAppSend = () => {
-    const phoneNumber = "2347045939049"; // your WhatsApp number (no +)
+    const phoneNumber = "2347045939049";
     const text = `Hello, I'm ${form.name}. ${form.message}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
+  };
+
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delay },
+    }),
+  };
+
+  const fadeLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, delay },
+    }),
+  };
+
+  const fadeRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, delay },
+    }),
   };
 
   return (
@@ -37,28 +64,38 @@ function Contact() {
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Heading */}
-        <div data-aos="fade-up" className="mb-12">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="mb-12"
+        >
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
             Get in Touch
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Need prayer, guidance, or want to worship with us? Reach out — our doors and
-            hearts are always open.
+            Need prayer, guidance, or want to worship with us? Reach out — our
+            doors and hearts are always open.
           </p>
-        </div>
+        </motion.div>
 
         {/* Contact Info & Form */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Info */}
-          <div
-            data-aos="fade-right"
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
             className="bg-white shadow-xl rounded-2xl p-8 text-left"
           >
             <h3 className="text-2xl font-semibold text-purple-700 mb-4">
               Visit or Contact Us
             </h3>
             <p className="text-gray-700 mb-3">
-              <span className="font-bold">Address:</span> 13 Prayer Avenue, MFM Regional HQ, Lagos, Nigeria
+              <span className="font-bold">Address:</span> 13 Prayer Avenue, MFM
+              Regional HQ, Lagos, Nigeria
             </p>
             <p className="text-gray-700 mb-3">
               <span className="font-bold">Phone:</span> +234 701 234 5678
@@ -67,12 +104,17 @@ function Contact() {
               <span className="font-bold">Email:</span> info@mfmlagos.org
             </p>
             <p className="text-gray-600">
-              Join us this Sunday for a power-filled service. We look forward to meeting you!
+              Join us this Sunday for a power-filled service. We look forward to
+              meeting you!
             </p>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <form
+          <motion.form
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
             onSubmit={handleGmailSend}
             className="bg-white shadow-xl rounded-2xl p-8 space-y-5"
           >
@@ -96,6 +138,7 @@ function Contact() {
                 className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
+
             <input
               type="text"
               name="subject"
@@ -105,6 +148,7 @@ function Contact() {
               required
               className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
+
             <textarea
               name="message"
               value={form.message}
@@ -131,7 +175,7 @@ function Contact() {
                 Send via WhatsApp
               </button>
             </div>
-          </form>
+          </motion.form>
         </div>
       </div>
 

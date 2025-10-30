@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Timetable() {
   const schedule = [
@@ -12,49 +13,53 @@ function Timetable() {
   return (
     <section
       id="timetable"
-      className="py-20 bg-gradient-to-b from-purple-50 to-white text-gray-800 font-[Poppins]"
+      className="py-24 bg-gradient-to-b from-purple-950 via-purple-900 to-purple-800 text-gray-100 font-[Poppins]"
     >
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-purple-800 font-[Playfair_Display] mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold font-[Playfair_Display] mb-4 text-white tracking-wide">
             Weekly Service Schedule
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Join any of our spirit-filled sessions throughout the week and
-            encounter the power of God in prayer, worship, and the Word.
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            Step into God’s presence all week long. Each service is a moment of encounter, renewal, and divine empowerment.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Timetable Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse bg-white shadow-lg rounded-2xl overflow-hidden">
-            <thead>
-              <tr className="bg-purple-800 text-white text-left">
-                <th className="py-4 px-6 text-lg font-semibold">Day</th>
-                <th className="py-4 px-6 text-lg font-semibold">Service</th>
-                <th className="py-4 px-6 text-lg font-semibold">Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {schedule.map((item, index) => (
-                <tr
-                  key={index}
-                  className="border-b border-gray-100 hover:bg-purple-50 transition"
-                >
-                  <td className="py-4 px-6 font-semibold text-purple-700">{item.day}</td>
-                  <td className="py-4 px-6">{item.event}</td>
-                  <td className="py-4 px-6 text-gray-700">{item.time}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* Schedule Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          {schedule.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl hover:shadow-purple-500/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              <h3 className="text-xl font-semibold text-pink-400 mb-2">{item.day}</h3>
+              <p className="text-lg font-medium text-white mb-1">{item.event}</p>
+              <p className="text-sm text-gray-300">{item.time}</p>
+            </motion.div>
+          ))}
         </div>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-400 text-sm mt-14"
+        >
           📍 22 Abiodun Street, Shomolu, Lagos, Nigeria
-        </p>
+        </motion.p>
       </div>
     </section>
   );

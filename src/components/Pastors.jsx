@@ -28,7 +28,7 @@ function Pastors() {
   return (
     <section
       id="pastors"
-      className="py-24 md:py-32 bg-gradient-to-b from-purple-50 via-white to-purple-100 text-gray-900 font-sans"
+      className="py-24 md:py-32 bg-gradient-to-b from-purple-100 via-pink-50 to-purple-100 text-gray-900 font-sans"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         {/* Heading */}

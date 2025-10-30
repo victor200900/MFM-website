@@ -17,7 +17,7 @@ function Hero() {
 
       {/* Content */}
       <div className="relative z-10 px-6 max-w-3xl">
-        <h1 className="text-7xl sm:text-8xl md:text-9xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
+        <h1 className="text-7xl sm:text-8xl md:text-9xl font-extrabold mb-4 tracking-wide drop-shadow-lg text-purple-800">
           MFM
         </h1>
 
@@ -25,8 +25,11 @@ function Hero() {
           Sanctuary of Grace
         </div>
 
+        <p className="text-lg sm:text-xl md:text-2xl text-red-500 mb-3  font-monospace font-extraboldbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb  ">
+        Surely, the Lord is in this place.
+        </p>
         <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-3 font-medium">
-          Pursue. Engage. Encounter God.
+        Genesis 28:16
         </p>
 
         <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8">
