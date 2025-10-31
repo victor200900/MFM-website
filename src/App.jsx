@@ -12,12 +12,12 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-purple-900 text-gray-100 font-[Poppins]">
+    <div className="flex m-0 p-0 flex-col min-h-screen bg-purple-900 text-gray-100 font-[Poppins]">
       {/* Navbar (always visible) */}
       <Navbar />
 
       {/* Page Content */}
-      <main className="flex-grow">
+      <main className="flex-grow m-0 p-0">
         <Routes>
           {/* Home Page */}
           <Route
