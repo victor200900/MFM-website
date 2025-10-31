@@ -118,10 +118,7 @@ function Footer() {
           © {new Date().getFullYear()} MFM Sanctuary of Grace. All rights
           reserved.
         </p>
-        <p className="mt-2">
-          Designed with <span className="text-pink-400">💜</span> by{" "}
-          <span className="text-white font-medium">Victor</span>
-        </p>
+        
       </div>
 
       {/* Bottom subtle glow */}

@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import aboutImg from "../assets/aboutusimg.webp"; // Replace with your image path
 import missionImg from "../assets/ourmission.jpg"; // Replace with your image path
 
@@ -12,12 +11,7 @@ function About() {
         className="container mx-auto flex flex-col lg:flex-row items-center gap-16 px-6 py-24 relative z-10"
       >
         {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="flex-1"
-        >
+        <div className="flex-1">
           <div className="relative group">
             <img
               src={aboutImg}
@@ -26,15 +20,10 @@ function About() {
             />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-white/20 to-transparent"></div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="flex-1"
-        >
+        <div className="flex-1">
           <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Mountain of Fire
@@ -52,14 +41,13 @@ function About() {
             believers who walk in power and purity — people who carry the fire
             of revival and the authority to break generational chains.
           </p>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
+          <a
             href="#mission"
             className="inline-block mt-4 px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-500 hover:from-pink-600 hover:to-purple-700 rounded-xl font-semibold text-white shadow-lg transition-all duration-300"
           >
             Our Mission
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </div>
 
       {/* MISSION SECTION */}
@@ -68,12 +56,7 @@ function About() {
         className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 px-6 py-24 relative z-10"
       >
         {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="flex-1"
-        >
+        <div className="flex-1">
           <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
               Our Mission
@@ -94,22 +77,16 @@ function About() {
             Every message, every prayer, and every service is designed to
             prepare souls for Heaven and manifest God’s glory on Earth.
           </p>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
+          <a
             href="#contact"
             className="inline-block mt-4 px-10 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-700 hover:to-pink-600 rounded-xl font-semibold text-white shadow-lg transition-all duration-300"
           >
             Join the Fire Movement
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
 
         {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="flex-1"
-        >
+        <div className="flex-1">
           <div className="relative group">
             <img
               src={missionImg}
@@ -118,7 +95,7 @@ function About() {
             />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-white/20 to-transparent"></div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

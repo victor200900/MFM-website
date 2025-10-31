@@ -12,6 +12,9 @@ function Contact() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  const resetForm = () =>
+    setForm({ name: "", email: "", subject: "", message: "" });
+
   const handleGmailSend = (e) => {
     e.preventDefault();
     const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=info@mfmlagos.org&su=${encodeURIComponent(
@@ -20,6 +23,7 @@ function Contact() {
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     )}`;
     window.open(gmailLink, "_blank");
+    resetForm();
   };
 
   const handleWhatsAppSend = () => {
@@ -27,6 +31,7 @@ function Contact() {
     const text = `Hello, I'm ${form.name}. ${form.message}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
+    resetForm();
   };
 
   // Animation variants
@@ -98,7 +103,7 @@ function Contact() {
               Regional HQ, Lagos, Nigeria
             </p>
             <p className="text-gray-700 mb-3">
-              <span className="font-bold">Phone:</span> +234 701 234 5678
+              <span className="font-bold">Phone:</span> +234 704 593 9049
             </p>
             <p className="text-gray-700 mb-6">
               <span className="font-bold">Email:</span> info@mfmlagos.org
@@ -126,7 +131,7 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Your Name"
                 required
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
               />
               <input
                 type="email"
@@ -135,7 +140,7 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Your Email"
                 required
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
               />
             </div>
 
@@ -146,7 +151,7 @@ function Contact() {
               onChange={handleChange}
               placeholder="Subject"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
             />
 
             <textarea
@@ -156,24 +161,29 @@ function Contact() {
               rows="5"
               placeholder="Your Message"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
             ></textarea>
 
             {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-4">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 type="submit"
                 className="flex-1 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 rounded-lg transition-all duration-300"
               >
                 Send via Gmail
-              </button>
-              <button
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 type="button"
                 onClick={handleWhatsAppSend}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition-all duration-300"
               >
                 Send via WhatsApp
-              </button>
+              </motion.button>
             </div>
           </motion.form>
         </div>
