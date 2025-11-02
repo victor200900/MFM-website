@@ -23,13 +23,13 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-[1000] font-serif transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 font-serif ${
         scrolled
-          ? "shadow-md bg-white/95 backdrop-blur-lg"
-          : "bg-white/90 backdrop-blur-md"
+          ? "bg-white/95 shadow-lg backdrop-blur-md"
+          : "bg-transparent backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-10 py-4 relative">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 sm:px-10 py-4">
         {/* Logo */}
         <NavLink to="/" className="flex items-center space-x-3">
           <img src={logo} alt="MFM Logo" className="h-10 sm:h-12 w-auto" />
@@ -38,16 +38,42 @@ function Navbar() {
           </span>
         </NavLink>
 
-        {/* Toggle button (Mobile) */}
+        {/* Desktop Nav Links */}
+        <ul className="hidden sm:flex items-center space-x-8 text-gray-800 font-medium">
+          {navLinks.map((link, i) => (
+            <li key={i}>
+              {link.to.startsWith("/") ? (
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-purple-700 font-semibold border-b-2 border-purple-700 pb-1 transition-all duration-300"
+                      : "text-gray-700 hover:text-purple-700 transition-all duration-300"
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ) : (
+                <a
+                  href={link.to}
+                  className="text-gray-700 hover:text-purple-700 transition-all duration-300"
+                >
+                  {link.name}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile Toggle Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="sm:hidden text-purple-800 focus:outline-none mr-5" // 👈 moved more left
+          className="sm:hidden text-purple-800 focus:outline-none relative z-[1100]"
         >
           {menuOpen ? (
-            // Close Icon (X)
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -60,10 +86,9 @@ function Navbar() {
               />
             </svg>
           ) : (
-            // Hamburger Icon
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -78,42 +103,40 @@ function Navbar() {
           )}
         </button>
 
-        {/* Nav Links */}
-        <ul
-          className={`sm:flex sm:items-center sm:space-x-8 text-gray-800 font-medium
-            absolute sm:static left-0 top-full w-full sm:w-auto 
-            bg-white sm:bg-transparent shadow-md sm:shadow-none 
-            transition-all duration-500 ease-in-out 
-            ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 sm:opacity-100"}
-            overflow-hidden sm:overflow-visible
-          `}
+        {/* Mobile Menu (Animated Dropdown) */}
+        <div
+          className={`absolute top-0 left-0 w-full bg-white/95 backdrop-blur-md text-gray-800 transform transition-transform duration-500 ease-in-out sm:hidden ${
+            menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+          }`}
         >
-          {navLinks.map((link, i) => (
-            <li key={i} className="sm:my-0 my-3 text-center sm:text-left">
-              {link.to.startsWith("/") ? (
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-purple-700 font-semibold hover:text-purple-900 transition-colors duration-300"
-                      : "text-gray-700 hover:text-purple-700 transition-colors duration-300"
-                  }
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.name}
-                </NavLink>
-              ) : (
-                <a
-                  href={link.to}
-                  className="text-gray-700 hover:text-purple-700 transition-colors duration-300"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
+          <ul className="flex flex-col items-center justify-center space-y-6 py-20 font-medium text-lg">
+            {navLinks.map((link, i) => (
+              <li key={i}>
+                {link.to.startsWith("/") ? (
+                  <NavLink
+                    to={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-purple-700 font-semibold border-b-2 border-purple-700 pb-1 transition-all duration-300"
+                        : "text-gray-700 hover:text-purple-700 transition-all duration-300"
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                ) : (
+                  <a
+                    href={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-gray-700 hover:text-purple-700 transition-all duration-300"
+                  >
+                    {link.name}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );

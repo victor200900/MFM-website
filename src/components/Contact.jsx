@@ -34,32 +34,20 @@ function Contact() {
     resetForm();
   };
 
-  // Animation variants
+  // Animation Variants
   const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, delay },
-    }),
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   const fadeLeft = {
-    hidden: { opacity: 0, x: -50 },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, delay },
-    }),
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
   };
 
   const fadeRight = {
-    hidden: { opacity: 0, x: 50 },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, delay },
-    }),
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
   };
 
   return (
@@ -124,7 +112,7 @@ function Contact() {
             className="bg-white shadow-xl rounded-2xl p-8 space-y-5"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
+              <motion.input
                 type="text"
                 name="name"
                 value={form.name}
@@ -132,8 +120,9 @@ function Contact() {
                 placeholder="Your Name"
                 required
                 className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
+                variants={fadeLeft}
               />
-              <input
+              <motion.input
                 type="email"
                 name="email"
                 value={form.email}
@@ -141,10 +130,11 @@ function Contact() {
                 placeholder="Your Email"
                 required
                 className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
+                variants={fadeRight}
               />
             </div>
 
-            <input
+            <motion.input
               type="text"
               name="subject"
               value={form.subject}
@@ -152,9 +142,10 @@ function Contact() {
               placeholder="Subject"
               required
               className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
+              variants={fadeUp}
             />
 
-            <textarea
+            <motion.textarea
               name="message"
               value={form.message}
               onChange={handleChange}
@@ -162,13 +153,14 @@ function Contact() {
               placeholder="Your Message"
               required
               className="w-full border border-gray-300 rounded-lg p-3 placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-purple-400 transition-colors duration-300"
-            ></textarea>
+              variants={fadeUp}
+            ></motion.textarea>
 
             {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-4">
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 type="submit"
                 className="flex-1 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 rounded-lg transition-all duration-300"
               >
@@ -176,8 +168,8 @@ function Contact() {
               </motion.button>
 
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 type="button"
                 onClick={handleWhatsAppSend}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition-all duration-300"

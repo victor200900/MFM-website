@@ -1,8 +1,25 @@
 import React from "react";
-import aboutImg from "../assets/aboutusimg.webp"; // Replace with your image path
-import missionImg from "../assets/ourmission.jpg"; // Replace with your image path
+import { motion } from "framer-motion"; // Import motion for animations
+import aboutImg from "../assets/aboutusimg.webp";
+import missionImg from "../assets/ourmission.jpg";
 
 function About() {
+  // Animation Variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const fadeLeft = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
+
+  const fadeRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <section className="relative bg-white text-gray-900 overflow-hidden">
       {/* ABOUT SECTION */}
@@ -11,7 +28,13 @@ function About() {
         className="container mx-auto flex flex-col lg:flex-row items-center gap-16 px-6 py-24 relative z-10"
       >
         {/* Image */}
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className="relative group">
             <img
               src={aboutImg}
@@ -20,10 +43,16 @@ function About() {
             />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-white/20 to-transparent"></div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Text */}
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Mountain of Fire
@@ -47,7 +76,7 @@ function About() {
           >
             Our Mission
           </a>
-        </div>
+        </motion.div>
       </div>
 
       {/* MISSION SECTION */}
@@ -56,7 +85,13 @@ function About() {
         className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 px-6 py-24 relative z-10"
       >
         {/* Text */}
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          variants={fadeLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <h2 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
               Our Mission
@@ -83,10 +118,16 @@ function About() {
           >
             Join the Fire Movement
           </a>
-        </div>
+        </motion.div>
 
         {/* Image */}
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className="relative group">
             <img
               src={missionImg}
@@ -95,7 +136,7 @@ function About() {
             />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-white/20 to-transparent"></div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
