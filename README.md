@@ -1,12 +1,10 @@
 # MFM Church Website
 
-A dynamic church website built with **React.js** and **Bootstrap**, showcasing events, sermons, and contact functionality.
+A dynamic church website built with **React.js** and **Tailwind**, showcasing events, sermons, and contact functionality.
 
 ## Demo
 
-[Live Demo on Vercel](https://ave-restaurant-website-36og.vercel.app/)  
-
-*(Replace with your actual deployed link if different)*
+[Live Demo on Vercel ( I https://mfm-website-sand.vercel.app/)
 
 ## Features
 
@@ -23,8 +21,3 @@ A dynamic church website built with **React.js** and **Bootstrap**, showcasing e
 - Bootstrap 5
 - CSS / Vanilla JS for interactivity
 
-## Installation
-
-1. Clone the repo:  
-   ```bash
-   git clone https://github.com/victor200900/MFM-website.git
